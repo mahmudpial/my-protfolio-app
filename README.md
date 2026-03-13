@@ -1,60 +1,312 @@
-<p align="center"><a href="https://laravel.com" target="_blank"><img src="https://raw.githubusercontent.com/laravel/art/master/logo-lockup/5%20SVG/2%20CMYK/1%20Full%20Color/laravel-logolockup-cmyk-red.svg" width="400" alt="Laravel Logo"></a></p>
+# 🚀 Portfolio App
 
-<p align="center">
-<a href="https://github.com/laravel/framework/actions"><img src="https://github.com/laravel/framework/workflows/tests/badge.svg" alt="Build Status"></a>
-<a href="https://packagist.org/packages/laravel/framework"><img src="https://img.shields.io/packagist/dt/laravel/framework" alt="Total Downloads"></a>
-<a href="https://packagist.org/packages/laravel/framework"><img src="https://img.shields.io/packagist/v/laravel/framework" alt="Latest Stable Version"></a>
-<a href="https://packagist.org/packages/laravel/framework"><img src="https://img.shields.io/packagist/l/laravel/framework" alt="License"></a>
-</p>
+A full-stack personal portfolio application built with **Laravel 12** and **Tailwind CSS**. Features a dark blue aesthetic, dynamic content management via an admin dashboard, and full authentication with single-admin access control.
 
-## About Laravel
+---
 
-Laravel is a web application framework with expressive, elegant syntax. We believe development must be an enjoyable and creative experience to be truly fulfilling. Laravel takes the pain out of development by easing common tasks used in many web projects, such as:
+## ✨ Features
 
-- [Simple, fast routing engine](https://laravel.com/docs/routing).
-- [Powerful dependency injection container](https://laravel.com/docs/container).
-- Multiple back-ends for [session](https://laravel.com/docs/session) and [cache](https://laravel.com/docs/cache) storage.
-- Expressive, intuitive [database ORM](https://laravel.com/docs/eloquent).
-- Database agnostic [schema migrations](https://laravel.com/docs/migrations).
-- [Robust background job processing](https://laravel.com/docs/queues).
-- [Real-time event broadcasting](https://laravel.com/docs/broadcasting).
+- **Public Portfolio** — Showcase projects, skills, and contact info to visitors
+- **Admin Dashboard** — Add, edit, and delete projects and skills via a secure panel
+- **Single-Admin Access** — Only one designated email can access the dashboard
+- **Dark Blue UI** — Custom black-blue design system with Playfair Display + DM Sans fonts
+- **Fully Responsive** — Mobile-friendly nav with hamburger menu
+- **Image Uploads** — Project thumbnails stored in Laravel's public disk
+- **Contact Form** — Visitors can send messages directly from the site
+- **Email Verification** — Built-in Laravel verification flow
+- **Password Reset** — Full forgot/reset password flow
 
-Laravel is accessible, powerful, and provides tools required for large, robust applications.
+---
 
-## Learning Laravel
+## 🛠 Tech Stack
 
-Laravel has the most extensive and thorough [documentation](https://laravel.com/docs) and video tutorial library of all modern web application frameworks, making it a breeze to get started with the framework. You can also check out [Laravel Learn](https://laravel.com/learn), where you will be guided through building a modern Laravel application.
+| Layer | Technology |
+|---|---|
+| Backend | Laravel 12 (PHP 8.4) |
+| Frontend | Blade Templates + Tailwind CSS CDN |
+| Database | MySQL |
+| Auth | Laravel Breeze (customised) |
+| Storage | Laravel public disk (local) |
+| Fonts | Google Fonts (Playfair Display, DM Sans) |
 
-If you don't feel like reading, [Laracasts](https://laracasts.com) can help. Laracasts contains thousands of video tutorials on a range of topics including Laravel, modern PHP, unit testing, and JavaScript. Boost your skills by digging into our comprehensive video library.
+---
 
-## Laravel Sponsors
+## 📁 Project Structure
 
-We would like to extend our thanks to the following sponsors for funding Laravel development. If you are interested in becoming a sponsor, please visit the [Laravel Partners program](https://partners.laravel.com).
+```
+app/
+├── Http/
+│   ├── Controllers/
+│   │   ├── HomeController.php          # Public home page
+│   │   ├── SkillController.php         # Skills CRUD
+│   │   ├── PortfolioController.php     # Projects CRUD + image upload
+│   │   ├── ContactController.php       # Contact form
+│   │   └── DashboardController.php     # Admin dashboard
+│   └── Middleware/
+│       └── AdminMiddleware.php         # Restricts dashboard to admin only
+├── Models/
+│   ├── User.php
+│   ├── Skill.php
+│   └── Portfolio.php
+config/
+└── admin.php                           # Admin email config
+resources/views/
+├── layouts/
+│   └── app.blade.php                   # Master layout (nav + footer)
+├── admin/
+│   ├── dashboard.blade.php             # Admin dashboard
+│   ├── skill-edit.blade.php            # Edit skill form
+│   └── portfolio-edit.blade.php        # Edit project form
+├── auth/
+│   ├── login.blade.php
+│   ├── register.blade.php
+│   ├── forgot-password.blade.php
+│   ├── reset-password.blade.php
+│   ├── confirm-password.blade.php
+│   └── verify-email.blade.php
+├── home.blade.php                      # Hero + services + featured projects
+├── skills.blade.php                    # Skills grid with filter tabs
+├── portfolio.blade.php                 # Projects grid with filter tabs
+└── contact.blade.php                   # Contact form
+routes/
+└── web.php                             # All application routes
+```
 
-### Premium Partners
+---
 
-- **[Vehikl](https://vehikl.com)**
-- **[Tighten Co.](https://tighten.co)**
-- **[Kirschbaum Development Group](https://kirschbaumdevelopment.com)**
-- **[64 Robots](https://64robots.com)**
-- **[Curotec](https://www.curotec.com/services/technologies/laravel)**
-- **[DevSquad](https://devsquad.com/hire-laravel-developers)**
-- **[Redberry](https://redberry.international/laravel-development)**
-- **[Active Logic](https://activelogic.com)**
+## ⚙️ Installation
 
-## Contributing
+### 1. Clone the repository
 
-Thank you for considering contributing to the Laravel framework! The contribution guide can be found in the [Laravel documentation](https://laravel.com/docs/contributions).
+```bash
+git clone https://github.com/yourusername/my-portfolio-app.git
+cd my-portfolio-app
+```
 
-## Code of Conduct
+### 2. Install PHP dependencies
 
-In order to ensure that the Laravel community is welcoming to all, please review and abide by the [Code of Conduct](https://laravel.com/docs/contributions#code-of-conduct).
+```bash
+composer install
+```
 
-## Security Vulnerabilities
+### 3. Install Node dependencies
 
-If you discover a security vulnerability within Laravel, please send an e-mail to Taylor Otwell via [taylor@laravel.com](mailto:taylor@laravel.com). All security vulnerabilities will be promptly addressed.
+```bash
+npm install && npm run build
+```
 
-## License
+### 4. Set up environment
 
-The Laravel framework is open-sourced software licensed under the [MIT license](https://opensource.org/licenses/MIT).
-# my-protfolio-app
+```bash
+cp .env.example .env
+php artisan key:generate
+```
+
+### 5. Configure `.env`
+
+```env
+APP_NAME="Portfolio"
+APP_URL=http://localhost:8000
+
+DB_CONNECTION=mysql
+DB_HOST=127.0.0.1
+DB_PORT=3306
+DB_DATABASE=my-portfolio-app
+DB_USERNAME=root
+DB_PASSWORD=
+
+# Admin — only this email can access the dashboard
+ADMIN_EMAIL=your@email.com
+
+# Owner name shown in hero section (when not logged in)
+APP_OWNER_NAME="Your Name"
+
+# Mail (use 'log' for local dev — check storage/logs/laravel.log)
+MAIL_MAILER=log
+MAIL_FROM_ADDRESS=noreply@yourportfolio.com
+MAIL_FROM_NAME="Portfolio"
+```
+
+### 6. Run migrations
+
+```bash
+php artisan migrate
+```
+
+### 7. Create storage symlink (for image uploads)
+
+```bash
+php artisan storage:link
+```
+
+### 8. Start the development server
+
+```bash
+php artisan serve
+```
+
+Visit **http://127.0.0.1:8000**
+
+---
+
+## 🔐 Admin Access
+
+Only one admin account can access the dashboard. To set it up:
+
+1. Add your email to `.env`:
+   ```env
+   ADMIN_EMAIL=your@email.com
+   ```
+
+2. Register an account at `/register` using that exact email.
+
+3. Log in at `/login` — you'll be redirected to `/dashboard`.
+
+> Any other account that tries to log in will be immediately logged out and shown an "unauthorised" error.
+
+### Register the middleware alias
+
+In `bootstrap/app.php`, add inside `withMiddleware`:
+
+```php
+->withMiddleware(function (Middleware $middleware) {
+    $middleware->alias([
+        'admin' => \App\Http\Middleware\AdminMiddleware::class,
+    ]);
+})
+```
+
+---
+
+## 🗄 Database Schema
+
+### `skills` table
+
+| Column | Type | Notes |
+|---|---|---|
+| id | bigint | Primary key |
+| name | varchar | Skill name |
+| level | varchar | Beginner / Intermediate / Advanced / Expert |
+| category | varchar | e.g. Frontend, Backend, DevOps |
+| years_exp | tinyint | Years of experience |
+| created_at | timestamp | |
+| updated_at | timestamp | |
+
+### `portfolios` table
+
+| Column | Type | Notes |
+|---|---|---|
+| id | bigint | Primary key |
+| title | varchar | Project title |
+| description | text | Project description |
+| link | varchar | Live URL |
+| github | varchar | GitHub URL |
+| category | varchar | Web App / UI-UX / API / Mobile |
+| tech_stack | varchar | Comma-separated e.g. "Laravel, Vue, MySQL" |
+| image | varchar | Path in storage/app/public/portfolio/ |
+| created_at | timestamp | |
+| updated_at | timestamp | |
+
+---
+
+## 🛣 Routes
+
+### Public
+
+| Method | URI | Description |
+|---|---|---|
+| GET | `/` | Home page |
+| GET | `/skills` | Skills page |
+| GET | `/portfolio` | Portfolio page |
+| GET | `/contact` | Contact form |
+| POST | `/contact` | Submit contact form |
+
+### Auth
+
+| Method | URI | Description |
+|---|---|---|
+| GET | `/login` | Login page |
+| GET | `/register` | Register page |
+| GET | `/forgot-password` | Forgot password |
+| POST | `/forgot-password` | Send reset link |
+| GET | `/reset-password/{token}` | Reset password form |
+| POST | `/reset-password` | Submit new password |
+
+### Admin (requires `auth` + `admin` middleware)
+
+| Method | URI | Description |
+|---|---|---|
+| GET | `/dashboard` | Admin dashboard |
+| POST | `/skills` | Add new skill |
+| GET | `/skills/{id}/edit` | Edit skill form |
+| PUT | `/skills/{id}` | Update skill |
+| DELETE | `/skills/{id}` | Delete skill |
+| POST | `/portfolio` | Add new project |
+| GET | `/portfolio/{id}/edit` | Edit project form |
+| PUT | `/portfolio/{id}` | Update project |
+| DELETE | `/portfolio/{id}` | Delete project |
+
+---
+
+## 📧 Contact Form
+
+The contact form validates and stores messages. To also send emails, configure your mail driver in `.env` and update `ContactController::store()`:
+
+```php
+// Uncomment after configuring MAIL_* in .env
+Mail::to(config('mail.from.address'))->send(new ContactMail($validated));
+```
+
+---
+
+## 🖼 Image Uploads
+
+Project images are stored at `storage/app/public/portfolio/` and served via the symlink at `public/storage/`. Make sure to run:
+
+```bash
+php artisan storage:link
+```
+
+Max upload size is **2MB** (jpg, jpeg, png, webp).
+
+---
+
+## 🧹 Useful Commands
+
+```bash
+# Clear all caches
+php artisan optimize:clear
+
+# Re-run migrations fresh
+php artisan migrate:fresh
+
+# Create a new migration
+php artisan make:migration add_column_to_table --table=table_name
+
+# Run specific migration
+php artisan migrate
+```
+
+---
+
+## 📸 Pages Overview
+
+| Page | Description |
+|---|---|
+| **Home** | Hero with typewriter effect, services, featured projects, testimonials |
+| **Skills** | Filterable skill cards with animated progress bars |
+| **Portfolio** | Filterable project cards with Live Demo + GitHub links |
+| **Contact** | Contact form with validation + contact info sidebar |
+| **Dashboard** | Admin panel to manage projects and skills |
+
+---
+
+## 📄 License
+
+This project is open-source and available under the [MIT License](LICENSE).
+
+---
+
+<div align="center">
+  Built with ❤️ using <strong>Laravel</strong> &amp; <strong>Tailwind CSS</strong>
+</div>
